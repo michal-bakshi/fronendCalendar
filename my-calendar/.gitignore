@@ -1,0 +1,22 @@
+# Node modules (don't push dependencies)
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build folder (if you don’t want to track built files)
+build/
+
+# Firebase cache and debug files
+.firebase/
+.firebaserc
+
+# Logs and system files
+.DS_Store
+Thumbs.db
+
+# Environment variables (important for security!)
+.env
+.env.local
+.env.development.local
+.env.production.local

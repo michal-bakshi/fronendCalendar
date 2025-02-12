@@ -1,0 +1,123 @@
+.custom-calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .custom-calendar td, .custom-calendar th {
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 50px;
+    height: 80px;
+  }
+  
+  .custom-calendar th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+  
+  .custom-calendar td {
+    vertical-align: middle;
+    position: relative;
+  }
+  
+  .custom-calendar td.bg-light {
+    background-color: #f2f2f2;
+  }
+  
+  .custom-calendar td .badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #dc3545;
+    border-radius: 50%;
+    width: 20px; /* גודל העיגול */
+  height: 20px; /* גובה העיגול */
+    padding: 0px;
+    color: white;
+  }
+  .events-container {
+    max-width: 70px;
+    max-height: 80px; 
+    overflow-y: auto;
+    padding: 2px;
+   
+  }
+  .day-container {
+  
+    overflow-y: auto; 
+    padding: 2px;
+   
+  }
+  .event-description {
+    margin-bottom: 5px;
+    word-wrap: break-word;
+  }
+  .delete-icon {
+    cursor: pointer;
+    display: inline-block;
+  }
+.events-container .delete-icon {
+  visibility: hidden; 
+  
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+}
+.events-container .edit-icon {
+  
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: blue;
+}
+.events-container .ok-icon {
+/*   
+  top: 5px;
+  right: 5px; */
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: seagreen;
+}
+.events-container .cancel-icon {
+  /*   
+    top: 5px;
+    right: 5px; */
+    font-size: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color:black;
+  }
+
+.events-container:hover .delete-icon {
+  visibility: visible;
+}
+.alert {
+  padding: 0 !important;
+}
+.d-flex {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.events-container {
+  margin: 0; /* רווח חיצוני */
+  padding: 2px; /* רווח פנימי קל לריווח נעים */
+  max-height: 100%;
+}
+
+/* לטקסט אריאה - רווח מתאים */
+textarea.form-control {
+  margin: 4px 0 !important; /* ריווח אנכי קטן בלבד */
+  padding: 5px; /* כדי שהטקסט ירגיש נוח */
+}

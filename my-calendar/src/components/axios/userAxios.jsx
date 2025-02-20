@@ -46,7 +46,8 @@ export const handleLogin = async (e, loginUser) => {
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify(loginUser),
       });
-  
+      console.log("Response status:", response.status);
+      console.log("Response headers:", response.headers.get("content-type"));
       if (response.status === 200) {
         return await response.json(); 
       } else {

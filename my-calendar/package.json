@@ -2,6 +2,7 @@
     "name": "my-calendar",
     "version": "1.0.0",
     "description": "A calendar project built with React",
+    "homepage": ".",
     "main": "index.js",
     "scripts": {
         "start": "react-scripts start",

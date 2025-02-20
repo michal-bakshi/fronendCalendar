@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addEventAction, changeButton } from "./redux/actions/dateAction";
 
 export const AddEvent=()=>{
-  const isButtonClicked=useSelector(x=>x.dates.isButtonClicked)
+ // const isButtonClicked=useSelector(x=>x.dates.isButtonClicked)
   // const events=useSelector(x=>x.dates.getMyEvents|| [])
 console.log(new Date().toLocaleDateString('he-IL-u-ca-hebrew', { year: 'numeric' }));
 

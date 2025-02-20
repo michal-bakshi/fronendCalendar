@@ -21,12 +21,12 @@ const[obj,setObg]=useState({
     token:tokenString
 })
   
-useEffect(() => {
-  if (isButtonClicked==true ) {
-    navigate('/my_show_month');
-    myD(changeButton(false))
-  }
-}, [isButtonClicked]);
+// useEffect(() => {
+//   if (isButtonClicked==true ) {
+//     navigate('/my_show_month');
+//     myD(changeButton(false))
+//   }
+// }, [isButtonClicked]);
 
 const handleNewEvent=(e)=>{
   e.preventDefault()

@@ -19,6 +19,10 @@ export const Menu=()=>{
       e.preventDefault()
       navigate('/my_show_month'); 
         };
+     const addNewEvent=(e)=>{
+        e.preventDefault()
+        navigate('/my_add_event')    
+        }
         // try {
             
         //     await dispatch(getMyEvents(tokenString)); 
@@ -42,7 +46,7 @@ export const Menu=()=>{
                         <Link  className="nav-link"  onClick={(e)=>getMyEventsFor(e)}> לוח שנה </Link>
                         </li>
                        {isConnect && (<li className="nav-item"> 
-                            <Link to="/my_add_event" className="nav-link" > הוספת ארוע </Link>
+                            <Link  className="nav-link" onClick={(e)=>addNewEvent(e)}> הוספת ארוע </Link>
                         </li>
                        )}
                         {/* <li className="nav-item">

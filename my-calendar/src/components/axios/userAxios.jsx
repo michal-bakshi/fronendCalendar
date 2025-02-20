@@ -24,10 +24,10 @@ import axios from 'axios';
 //     }
 //   };
   export const newRegister=(user)=>{
-    return axios.post(`http://localhost:8081/user/addUser`,user)
+    return axios.post(`https://calendar-backend-9j19.onrender.com/user/addUser`,user)
   }
   export const verifyTokenEmail=(token)=>{
-    return axios.get(`http://localhost:8081/user/verifyEmail/${token}`)
+    return axios.get(`https://calendar-backend-9j19.onrender.com/user/verifyEmail/${token}`)
   }
 
 //   export const handleLogin = (e, loginUser) => {
@@ -41,7 +41,7 @@ import axios from 'axios';
 export const handleLogin = async (e, loginUser) => {
     try {
       e.preventDefault();
-      const response = await fetch('http://localhost:8081/user/login', {
+      const response = await fetch('https://calendar-backend-9j19.onrender.com/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify(loginUser),

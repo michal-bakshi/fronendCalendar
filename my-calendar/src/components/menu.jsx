@@ -48,10 +48,10 @@ export const Menu=()=>{
                         {/* <li className="nav-item">
                             <a className="nav-link disabled" tabIndex="-1" aria-disabled="true"> current date  </a>
                         </li> */}
-                         {isConnect && (<li className="nav-item"> 
+                         {/* {isConnect && (<li className="nav-item"> 
                             <Link className="nav-link" onClick={getMyEventsFor} > רשימת ארועים שלי  </Link>
                         </li>
-                       )}
+                       )} */}
                     </ul>
                     <div className="search">
                     {/* <form id="form_search" className="d-flex ms-auto d-md-flex  d-none">

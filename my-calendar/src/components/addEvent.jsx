@@ -22,7 +22,7 @@ const[obj,setObg]=useState({
 })
   
 useEffect(() => {
-  if (isButtonClicked ) {
+  if (isButtonClicked==true ) {
     navigate('/my_show_month');
     myD(changeButton(false))
   }

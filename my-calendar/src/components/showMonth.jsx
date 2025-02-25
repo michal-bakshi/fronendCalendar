@@ -185,7 +185,7 @@ export const ShowMonth = () => {
           alert("אירעה שגיאה בעת מחיקת האירוע");
 
       } catch (error) {
-        console.error("שגיאה במחיקת האירוע:", error);
+        console.error("שגיאה במהלך מחיקת האירוע:", error);
 
       }
     }

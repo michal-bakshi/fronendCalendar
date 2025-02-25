@@ -173,7 +173,7 @@ export const ShowMonth = () => {
     const confirmDelete = window.confirm("האם אתה בטוח שברצונך למחוק את האירוע?");
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:8080/reservedDates/delete/${eventId}`, {
+        const response = await fetch(`https://calendar-backend-9j19.onrender.com/reservedDates/delete/${eventId}`, {
           method: 'DELETE',
         });
 

@@ -49,7 +49,7 @@ export const handleLogin = async (e, loginUser) => {
       console.log("Response status:", response.status);
       console.log("Response headers:", response.headers.get("content-type"));
       if (response.status === 200) {
-        return await response.json(); 
+        return await response.text(); 
       } else {
         const data = await response.json();
         throw new Error(data.message); 

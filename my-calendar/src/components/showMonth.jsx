@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { HDate, Hebcal } from 'hebcal';
+import { HebrewCalendar } from 'hebcal';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import MyContex from './contex';
@@ -20,7 +21,7 @@ export const ShowMonth = () => {
   const myD=useDispatch()
   const [editingEventId, setEditingEventId] = useState(null);
   const [editedDescription, setEditedDescription] = useState('');
-
+const holidayEvents=[]
 
  
   // const getMyEvents=useContext(MyContex).getMyEvents
@@ -63,24 +64,8 @@ export const ShowMonth = () => {
 
   // useEffect(() => {
 
-  //   const hebcal = new Hebcal();
-  //   const fetchHolidays = async () => {
-  //     try {
-  //       const holidayEvents = hebcal.holidays;
-  //       for (const date in holidays) {
-  //         if (holidays.hasOwnProperty(date)) {
-           
-  //         }
-  //       }
-
-  //       setHolidays(holidayEvents); 
-  //     } catch (error) {
-  //       console.error("Error fetching holidays:", error);
-  //     }
-
-  //   };
-  //   fetchHolidays(); // קריאה לפונקציה לקבלת החגים
-  // }, [year]); // מפעילים כל פעם שהשנה משתנה
+    
+  // }, );
   const isFetched = useRef(false);
   useEffect(() => {
     if (!isFetched.current && (!getMyEvents || getMyEvents.length === 0)) {
@@ -95,7 +80,29 @@ export const ShowMonth = () => {
           console.error("Error fetching events:", error);
         });
     }
-  }, [getMyEvents, tokenString]);
+    const hebcal = new Hebcal();
+    
+    
+    const fetchHolidays = async () => {
+      try {
+        const response = await fetch(
+          `https://www.hebcal.com/hebcal?v=1&year=${year}&s=on&cfg=json&maj=on&min=on&mod=on&nx=on`
+        );
+        const data = await response.json();
+        setHolidays(data.items);
+        console.log(data.items) // המידע הרלוונטי מגיע תחת המפתח 'items'
+      } catch (error) {
+        console.error("Error fetching holidays:", error);
+      }
+    
+      
+      // Print all holidays
+      holidays.forEach(event => {
+        //console.log(event.hebrew, event.date);
+      });
+    };
+    fetchHolidays(); 
+  }, [getMyEvents, tokenString],[year]);
 
 
   const convertToHeb = (day) => {
@@ -138,6 +145,21 @@ export const ShowMonth = () => {
       return eventsForToday;
     }
   };
+  const holodayEvents = (day) => {
+    const holidasList = [];  // Create a new list for holidays
+    const formattedDay = String(day).padStart(2, '0');
+    const formattedMonth = String(month + 1).padStart(2, '0');  // The month is already available, so no need to pass it
+    const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+  
+    holidays.forEach(holi => {
+      if (holi.date === formattedDate) {
+        holidasList.push(holi);  // Add holiday to the list
+      }
+    });
+  
+    return holidasList;  // Return the list of holidays for the day
+  }
+  
 
 
   const handleMouseEnter = (eventId) => {
@@ -226,12 +248,36 @@ export const ShowMonth = () => {
             <tr key={index} onClick={() => handleRowClick(index)}>
               {week.map((day, indexN) => {
                 const eventsForDay = getEventsForDay(day);
+                const holidasList=holodayEvents(day)
+                console.log(holidasList);
+                
                 return (
                   <td key={indexN} className={`${indexN >= 5 ? "bg-light" : ""} events-container overflow-auto`} width={"70px"} height={"80px"}>
                     <div className="d-flex justify-content-between">
                       <span className={day == currentDate && month == initialMonth ? "badge bg-danger rounded-circle" : ""} style={{ height: "22px" }}>
                         {day}
                       </span>
+                      {holidasList &&(
+                        <div className="holiday-event" style={{
+                          maxHeight: "70px",  
+                          overflowY: "auto",  
+                          width: "100%",     
+                        }}>
+                          {holidasList.map((holiday,i)=>(
+                            <div key={i}  style={{      
+                              width: "100%",
+                              fontSize: "10px",
+                              overflowY: "auto",     
+                              padding: "10px",       
+                              boxSizing: "border-box",  
+                            }}
+                            className="event-description alert alert-info">
+                              {holiday.hebrew}
+                            </div>
+                          ))}
+
+                        </div>
+                      )}
                       {eventsForDay && (
                         <div className="events-container" style={{
                           maxHeight: "70px",  

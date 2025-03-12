@@ -55,17 +55,7 @@ const holidayEvents=[]
     }
     weeks.push(week);
   }
-  // const getMyEventsFor = async () => {
-  //   console.log("Calling getMyEvents");
-  //    setEventsData(await getMyEvents(tokenString))
-  //   };
  
-
-
-  // useEffect(() => {
-
-    
-  // }, );
   const isFetched = useRef(false);
   useEffect(() => {
     if (!isFetched.current && (!getMyEvents || getMyEvents.length === 0)) {
@@ -90,19 +80,14 @@ const holidayEvents=[]
         );
         const data = await response.json();
         setHolidays(data.items);
-        console.log(data.items) // המידע הרלוונטי מגיע תחת המפתח 'items'
+        console.log(data.items) 
       } catch (error) {
         console.error("Error fetching holidays:", error);
       }
     
-      
-      // Print all holidays
-      holidays.forEach(event => {
-        //console.log(event.hebrew, event.date);
-      });
     };
     fetchHolidays(); 
-  }, [getMyEvents, tokenString],[year]);
+  }, [getMyEvents, tokenString,year]);
 
 
   const convertToHeb = (day) => {
@@ -146,18 +131,20 @@ const holidayEvents=[]
     }
   };
   const holodayEvents = (day) => {
-    const holidasList = [];  // Create a new list for holidays
+    const holidasList = [];  
     const formattedDay = String(day).padStart(2, '0');
-    const formattedMonth = String(month + 1).padStart(2, '0');  // The month is already available, so no need to pass it
+    const formattedMonth = String(month + 1).padStart(2, '0');  
     const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+    console.log(year);
+    
   
     holidays.forEach(holi => {
       if (holi.date === formattedDate) {
-        holidasList.push(holi);  // Add holiday to the list
+        holidasList.push(holi);  
       }
     });
   
-    return holidasList;  // Return the list of holidays for the day
+    return holidasList; 
   }
   
 
@@ -215,7 +202,6 @@ const holidayEvents=[]
 
   const handleRowClick = (index) => {
     console.log(`Clicked row ${index}`)
-    // navigate('/my_add_event');
   }
   const toWeek=()=>{
     navigate('/showWeek')
@@ -249,8 +235,6 @@ const holidayEvents=[]
               {week.map((day, indexN) => {
                 const eventsForDay = getEventsForDay(day);
                 const holidasList=holodayEvents(day)
-                console.log(holidasList);
-                
                 return (
                   <td key={indexN} className={`${indexN >= 5 ? "bg-light" : ""} events-container overflow-auto`} width={"70px"} height={"80px"}>
                     <div className="d-flex justify-content-between">

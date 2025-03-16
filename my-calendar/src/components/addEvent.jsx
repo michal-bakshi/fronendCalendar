@@ -17,8 +17,9 @@ const[obj,setObg]=useState({
     month:"",
     year:new Date().toLocaleDateString('he-IL-u-ca-hebrew', { year: 'numeric' }),
     desc:"",
-    remainder:"",
-    token:tokenString
+    remainder:"never",
+    token:tokenString,
+    color:"alere-warning"
 })
   
 // useEffect(() => {
@@ -105,7 +106,7 @@ const handleNewEvent=(e)=>{
 
     <div className="mb-3">
       <label htmlFor="event" className="form-label">תאור</label>
-      <input id="event" className="form-control" type="text"  placeholder="יומולדת ל-" onBlur={(x)=>setObg({...obj,desc:x.target.value})} required/>
+      <input id="event" className="form-control" type="text"  placeholder=" תאור הארוע..." onBlur={(x)=>setObg({...obj,desc:x.target.value})} required/>
     </div>
 
     <div className="mb-3">
@@ -114,6 +115,15 @@ const handleNewEvent=(e)=>{
         <option value="yearly">מידי שנה</option>
         <option value="once">פעם אחת</option>
         <option value="never">אף פעם</option>
+      </select>
+    </div>
+    <div className="mb-3">
+      <label htmlFor="colorEvent" className="form-label">צבע</label>
+      <select name="color" id="colorEvent" className="form-select" onBlur={(x)=>setObg({...obj,color:x.target.value})} required>
+        <option value="alert-danger">אדום</option>
+        <option value="alert-success"> ירוק</option>
+        <option value="alert-warning">צהוב </option>
+        <option value="alert-secondary">אפור </option>
       </select>
     </div>
 

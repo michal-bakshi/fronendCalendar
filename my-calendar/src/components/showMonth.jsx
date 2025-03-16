@@ -255,8 +255,8 @@ const holidayEvents=[]
                               padding: "10px",       
                               boxSizing: "border-box",  
                             }}
-                            className="event-description alert alert-info">
-                              {holiday.hebrew}
+                            className={`event-description alert ${holiday.category === "parashat" || holiday.category === "roshchodesh" ? "alert-light" : "alert-info"}`}>
+                            {holiday.hebrew}
                             </div>
                           ))}
 

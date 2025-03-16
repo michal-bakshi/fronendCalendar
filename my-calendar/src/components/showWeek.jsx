@@ -234,7 +234,7 @@ navigate('/my_show_month')
                               padding: "10px",       
                               boxSizing: "border-box",  
                             }}
-                            className="event-description alert alert-info">
+                            className={`event-description alert ${holiday.category === "parashat" || holiday.category === "roshchodesh" ? "alert-light" : "alert-info"}`}>
                               {holiday.hebrew}
                             </div>
                           ))}
@@ -248,7 +248,7 @@ navigate('/my_show_month')
                               key={i}
                               style={{
                                fontSize: "10px" }}
-                              className={`event-description alert ${event.color}`}
+                              className={`event-description alert ${event.color||"alert-warning"}`}
                               onMouseEnter={() => handleMouseEnter(event._id)}
                               onMouseLeave={handleMouseLeave}
                             >

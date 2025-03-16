@@ -248,7 +248,7 @@ navigate('/my_show_month')
                               key={i}
                               style={{
                                fontSize: "10px" }}
-                              className={`event-description alert ${event.color||"alert-warning"}`}
+                              className={`event-description alert ${event.color!="" ? event.color:"alert-warning"}`}
                               onMouseEnter={() => handleMouseEnter(event._id)}
                               onMouseLeave={handleMouseLeave}
                             >

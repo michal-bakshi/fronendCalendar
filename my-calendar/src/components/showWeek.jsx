@@ -270,7 +270,7 @@ navigate('/my_show_month')
                                 </div>
                               ) : (
                                 <>
-                                  {event.description}----{event.color}
+                                  {event.description}
                                   {focusedEventId == event._id && (
                                     <div>
                                       <button

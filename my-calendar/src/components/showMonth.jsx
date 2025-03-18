@@ -279,7 +279,7 @@ const holidayEvents=[]
                                 padding: "10px",       
                                 boxSizing: "border-box"  
                               }}
-                              className="event-description alert alert-warning"
+                              className={`event-description alert ${event.color!=undefined ? event.color:"alert-warning"}`}
                               onMouseEnter={() => handleMouseEnter(event._id)}
                               onMouseLeave={handleMouseLeave}
                             >
